@@ -46,6 +46,7 @@ export default function RootLayout() {
         <Stack.Screen name="DataScanned" options={{ headerShown: false }} />
         <Stack.Screen name="recommends" options={{ headerShown: false }} />
         <Stack.Screen name="CropRecommendation" options={{ headerShown: false }} />
+        <Stack.Screen name="MethodSelection" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

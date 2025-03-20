@@ -3,6 +3,7 @@ import { View, Text, ScrollView, TextInput, Image, TouchableOpacity } from 'reac
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import Geolocation from 'react-native-geolocation-service';
+import { useSidebar } from '../context/SidebarContext';
 
 
 export default function Dashboard() {
@@ -10,6 +11,7 @@ export default function Dashboard() {
     const [district, setDistrict] = useState('Fetching district...');
     const [currentIndex, setCurrentIndex] = useState(0);
     const [activeTab, setActiveTab] = useState('Overview');
+    const { toggleSidebar } = useSidebar();
 
     useEffect(() => {
         Geolocation.getCurrentPosition(
@@ -69,13 +71,23 @@ export default function Dashboard() {
         <SafeAreaView className="flex-1 bg-[#FAF9F6]">
             <ScrollView className="flex-1">
                 {/* Header */}
-                <View className="bg-[#589A74] py-10 px-4 rounded-b-2xl">
-                    <Text className="text-white text-lg font-bold">Location</Text>
-                    <View className="flex-row items-center">
-                        <Ionicons name="location-outline" size={20} color="white" style={{ marginRight: 5 }} />
-                        <Text className="text-white">{location}</Text>
+                <View className="bg-green-800 py-10 px-4">
+                    <View className="flex-row justify-between items-center">
+                        <TouchableOpacity onPress={toggleSidebar}>
+                            <Ionicons name="menu-outline" size={24} color="white" />
+                        </TouchableOpacity>
+                        <View>
+
+                            <View className="flex-row items-center">
+                                <Ionicons name="location-outline" size={20} color="white" style={{ marginRight: 5 }} />
+                                <Text className="text-white">{location}</Text>
+                            </View>
+                        </View>
+                        <Ionicons name="notifications-outline" size={24} color="white" />
                     </View>
-                    <View className="flex-row items-center mt-2 bg-white p-2 rounded-lg">
+
+                    {/* Search Bar */}
+                    <View className="flex-row items-center mt-10 bg-white p-2 rounded-lg">
                         <Ionicons name="search-outline" size={20} color="#0B4D26" />
                         <TextInput
                             placeholder="Search.."

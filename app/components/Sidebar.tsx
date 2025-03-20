@@ -9,7 +9,7 @@ const menuItems = [
     { icon: 'analytics-outline', label: 'Analytics', route: '/(main)/analytics' as const },
     { icon: 'leaf-outline', label: 'Harvest', route: '/(main)/harvest' as const },
     { icon: 'calendar-outline', label: 'Schedule', route: '/(main)/schedule' as const },
-    { icon: 'star-outline', label: 'Recommends', route: '/(main)/recommends' as const },
+    { icon: 'star-outline', label: 'Recommends', route: '../recommends' as const },
     { icon: 'cloudy-outline', label: 'Weather', route: '/(main)/weather' as const },
     { icon: 'scan-outline', label: 'Soil detects', route: '/../SoilDetection' as const },
     { icon: 'people-outline', label: 'Community', route: '/(main)/community' as const },

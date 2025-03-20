@@ -1,58 +1,46 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, Dimensions, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 
 export default function SoilDetection() {
     const router = useRouter();
-    const screenWidth = Dimensions.get('window').width;
-
-    const handleStartDetection = () => {
-        router.push('/SoilDetectionProcess');
-    };
 
     return (
-        <SafeAreaView className="flex-1 bg-white">
-            {/* Main Content */}
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                <View className="flex-1 items-center px-6">
-                    {/* Oval Image Container */}
-                    <View
-                        className="w-full aspect-[4/5] mb-8 overflow-hidden"
-                        style={{
-                            borderRadius: screenWidth * 0.5,
-                            maxWidth: screenWidth - 48, // 24px padding on each side
-                        }}
-                    >
-                        <Image
-                            source={require('../assets/soil-detection-image.png')}
-                            className="w-full h-full"
-                            resizeMode="cover"
-                        />
-                    </View>
+        <SafeAreaView className="flex-1 bg-[#F5F5DC] p-5">
+            <View className="flex-1 justify-centerp-6">
+                {/* Image Container */}
+                <View className="w-full aspect-[3/4] mb-4 overflow-hidden">
+                    <Image
+                        source={require('../assets/soil-detection-image.png')}
+                        className="w-full h-full"
+                        resizeMode="cover"
+                    />
+                </View>
 
-                    {/* Text Content */}
-                    <View className="w-full">
-                        <Text className="text-2xl font-semibold mb-3">
-                            Start your <Text className="text-[#0B4D26]">soil</Text> detection
-                        </Text>
-                        <Text className="text-gray-600 text-base mb-8">
-                            Detect soil type, pH, moisture, nutrients, and other properties
-                            to get recommended about what to do
-                        </Text>
-                    </View>
+                {/* Text Content */}
+                <View className="w-full items-center px-6 mb-4">
+                    <Text className="text-2xl font-semibold mb-2 text-center">
+                        Soil detection
+                    </Text>
+                    <Text className="text-gray-700 text-base text-center">
+                        Detect soil type, pH, moisture, nutrients, and other properties
+                        to get recommended about what to do
+                    </Text>
+                </View>
 
-                    {/* Button */}
+                {/* Button */}
+                <View className="items-center">
                     <TouchableOpacity
-                        onPress={handleStartDetection}
-                        className="bg-[#0B4D26] w-full py-4 rounded-xl"
+                        className="bg-[#0B4D26] w-3/4 py-2 rounded-sm"
+                        onPress={() => router.push('MethodSelection')}
                     >
                         <Text className="text-white text-center text-lg font-medium">
                             Start now
                         </Text>
                     </TouchableOpacity>
                 </View>
-            </ScrollView>
+            </View>
         </SafeAreaView>
     );
 }
